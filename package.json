@@ -1,0 +1,18 @@
+{
+  "name": "cosmosdb_throttler",
+  "version": "1.0.0",
+  "description": "Simple function to read messages from Azure Service Hub and write to CosmosDB at a throttled pace.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidov541/CosmosDBThrottler.git"
+  },
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "gremlin": "^3.4.6"
+  },
+  "devDependencies": {}
+}
