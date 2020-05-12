@@ -5,7 +5,7 @@
         "type": "serviceBusTrigger",
         "direction": "in",
         "queueName": "cosmoswrites",
-        "connection": "mixologyjournal_RootManageSharedAccessKey_SERVICEBUS"
+        "connection": "mixologyjournal_RootManagedSharedAccessKey_SERVICEBUS"
       }
     ],
     "disabled": false,
