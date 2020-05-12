@@ -1,8 +1,0 @@
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=storageaccountmixolb7df;AccountKey=PDRAE9Xdb6ibfqrgPcpiIj8juqN1/cAc3ELj0naZZdIZJPrgsnyp1Sbu/yZA5d4lVoBjcitae5x9UW0Tj284dw==;EndpointSuffix=core.windows.net",
-    "FUNCTIONS_WORKER_RUNTIME": "node",
-    "mixologyJournal_RootManageSharedAccessKey_SERVICEBUS": "Endpoint=sb://mixologyjournal.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=iPHLB0iL/RPZnXrzbOsodLVkPx212tnhSNNZzkVUvlI="
-  }  
-}
