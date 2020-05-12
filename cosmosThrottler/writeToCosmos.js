@@ -1,8 +1,9 @@
 ﻿const cosmos = require('./cosmos');
 
 module.exports = async function(context, msg) {
-    context.log("Context: " + JSON.stringify(context));
-    context.log("Message: " + JSON.stringify(msg));
+    console.log("Context: " + JSON.stringify(context));
+    console.log("Message: " + JSON.stringify(msg));
+    console.log("Message2: " + msg);
     switch(msg.entityType)
     {
         case 'vertex':
