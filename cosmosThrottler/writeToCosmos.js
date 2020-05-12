@@ -10,5 +10,7 @@ module.exports = async function(context, msg) {
         case 'edge':
             await cosmos.createEdge(parsed.source, parsed.target, parsed.relationship, parsed.properties);
             break;
+        case 'deletion':
+            await cosmos.deleteEntry(parsed.id, parsed.edgeLabelsToFollow);
     }
 };
