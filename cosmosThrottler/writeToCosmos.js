@@ -12,5 +12,6 @@ module.exports = async function(context, msg) {
             break;
         case 'deletion':
             await cosmos.deleteEntry(parsed.id, parsed.edgeLabelsToFollow);
+            break;
     }
 };
