@@ -1,10 +1,10 @@
-const Gremlin = require('gremlin');
+var gremlin = require('gremlin');
 const config = require("./config");
 
-const authenticator = new Gremlin.driver.auth.PlainTextSaslAuthenticator(`/dbs/${config.database}/colls/${config.collection}`, config.primaryKey)
+const authenticator = new gremlin.driver.auth.PlainTextSaslAuthenticator(`/dbs/${config.database}/colls/${config.collection}`, config.primaryKey)
 
 function createClient() {
-    return new Gremlin.driver.Client(
+    return new gremlin.driver.Client(
         config.endpoint,
         {
             authenticator,
@@ -17,7 +17,7 @@ function createClient() {
 
 async function createEntryOfKind(kind, id, properties, edges) {
     var command = "g.addV(label).property('id', id).property('partition_key', partition_key)"
-    Object.keys(properties).forEach(k => command += `.property("${k}", "${properties[k]}")`)
+    Object.keys(properties).forEach(k => command += `.property('${k}', '${properties[k]}')`)
     const client = createClient()
     await client.open();
     const result = await client.submit(command, {
@@ -41,6 +41,7 @@ async function createEdge(source, target, relationship, properties) {
     var command = "g.V(source).addE(relationship).to(g.V(target))";
     Object.keys(properties).forEach(k => command += `.property('${k}', '${properties[k]}')`)
     const client = createClient()
+    await client.open();
     const result = await client.submit(command, {
         source: source,
         relationship: relationship,
