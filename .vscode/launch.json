@@ -4,6 +4,19 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Local Tests",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "test"
+      ],
+      "port": 9229,
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Run Local Azure Functions Instance",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["start", "func", "start", "--build"],

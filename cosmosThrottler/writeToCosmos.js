@@ -1,7 +1,8 @@
-﻿const cosmos = require('./cosmos');
+﻿var cosmos = require('./cosmos');
 
-module.exports = async function(context, msg) {
+module.exports = async function(_, msg) {
     const parsed = JSON.parse(msg);
+    console.log(cosmos);
     switch(parsed.entityType)
     {
         case 'vertex':
