@@ -31,28 +31,32 @@ async function createEntryOfKind(kind, id, properties, edges) {
     ";edges = " + JSON.stringify(edges) + 
     "RUs used: " + result.attributes["x-ms-request-charge"])
 
-    const edgePromises = edges.map(async e => await createEdge(id, e.id, e.relationship, e.properties))
+    const edgePromises = edges.map(async e => await createEdgeInternal(id, e.id, e.relationship, e.properties, client))
     await Promise.all(edgePromises)
 
     await client.close();
 }
 
 async function createEdge(source, target, relationship, properties) {
-    var command = "g.V(source).addE(relationship).to(g.V(target))";
-    Object.keys(properties).forEach(k => command += `.property('${k}', '${properties[k]}')`)
     const client = createClient()
     await client.open();
+    await createEdgeInternal(source, target, relationship, properties, client);
+    client.close();
+}
+
+async function createEdgeInternal(source, target, relationship, properties, client) {
+    var command = "g.V(source).addE(relationship).to(g.V(target))";
+    Object.keys(properties).forEach(k => command += `.property('${k}', '${properties[k]}')`);
     const result = await client.submit(command, {
         source: source,
         relationship: relationship,
         target: target
-    })
-    console.log("createEdge; source = " + source + 
-    ";target = " + target + 
-    ";relationship = " + relationship + 
-    ";properties = " + JSON.stringify(properties) + 
-    "RUs used: " + result.attributes["x-ms-request-charge"])
-    client.close();
+    });
+    console.log("createEdge; source = " + source +
+        ";target = " + target +
+        ";relationship = " + relationship +
+        ";properties = " + JSON.stringify(properties) +
+        "RUs used: " + result.attributes["x-ms-request-charge"]);
 }
 
 async function deleteEntry(id, edgeLabelsToFollow) {

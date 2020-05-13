@@ -67,7 +67,7 @@ describe('Cosmos Interface Tests', function () {
         await uut.createEntryOfKind(message.kind, message.id, message.properties, message.edges);
 
         expect(openSpy.called).toBeTruthy();
-        expect(openSpy.callCount).toBe(3);
+        expect(openSpy.callCount).toBe(1);
 
         expect(submitFake.called).toBeTruthy();
         expect(submitFake.callCount).toBe(3);
@@ -106,7 +106,7 @@ describe('Cosmos Interface Tests', function () {
         expect(args3[1]).toEqual(expectedParametersEdge2);
 
         expect(closeSpy.called).toBeTruthy();
-        expect(closeSpy.callCount).toBe(3);
+        expect(closeSpy.callCount).toBe(1);
     });
     
     test('should properly ask to create edge', async function () {
