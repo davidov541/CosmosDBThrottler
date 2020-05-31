@@ -26,10 +26,17 @@ const gremlinMock = {
         Client: clientStub
     },
 };
+mockConfig = {
+    "endpoint": "someEndpoint",
+    "primaryKey": "someKey",
+    "database": "mixologyjournal",
+    "collection": "mixologyjournal",
+    "env": "dev"
+};
+
 uut.__set__("gremlin", gremlinMock);
 uut.__set__("GetAuthenticator", () => {})
-
-
+uut.__set__("GetConfig", () => mockConfig)
 describe('Cosmos Interface Tests', function () {
     beforeEach(() => {
         openSpy.resetHistory();
