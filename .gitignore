@@ -104,5 +104,3 @@ dist
 .tern-port
 
 local.settings.json
-
-cosmosThrottler/config.js
