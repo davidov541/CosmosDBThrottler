@@ -1,16 +1,14 @@
 var gremlin = require('gremlin');
 
-var GetConfig = () => require("./config");
-
-var GetAuthenticator = () => {
-    const config = GetConfig()
-    new gremlin.driver.auth.PlainTextSaslAuthenticator(`/dbs/${config.database}/colls/${config.collection}`, config.primaryKey)
+const config = require("./config")
+var authenticator = {}
+try { 
+    authenticator = new gremlin.driver.auth.PlainTextSaslAuthenticator(`/dbs/${config.database}/colls/${config.collection}`, config.primaryKey)
+} catch (e) {
+    console.log("Error while getting Gremlin authenticator: " + e)
 }
 
 function createClient() {
-    const authenticator = GetAuthenticator()
-    const config = GetConfig()
-
     return new gremlin.driver.Client(
         config.endpoint,
         {
