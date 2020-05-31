@@ -27,6 +27,7 @@ const gremlinMock = {
     },
 };
 uut.__set__("gremlin", gremlinMock);
+uut.__set__("GetAuthenticator", () => {})
 
 
 describe('Cosmos Interface Tests', function () {
