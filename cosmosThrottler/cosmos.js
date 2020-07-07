@@ -89,6 +89,21 @@ async function deleteEntry(id, edgeLabelsToFollow) {
     await client.close();
 }
 
+async function deleteEdge(id) {
+    const command1 = "g.E(id).drop()";
+
+    const client = createClient()
+    await client.open();
+    const result1 = await client.submit(command1, {
+        id: id
+    })
+    console.log("deleteEdge #1; id = " + id +
+    ";RUs used: " + result1.attributes["x-ms-request-charge"])
+
+    await client.close();
+}
+
 exports.createEntryOfKind = createEntryOfKind;
 exports.createEdge = createEdge;
 exports.deleteEntry = deleteEntry;
+exports.deleteEdge = deleteEdge;
