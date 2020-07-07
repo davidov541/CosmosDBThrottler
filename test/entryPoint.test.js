@@ -5,10 +5,12 @@ const uut = rewire('../cosmosThrottler/writeToCosmos');
 const createEntryOfKindSpy = sinon.spy();
 const createEdgeSpy = sinon.spy();
 const deleteEntrySpy = sinon.spy();
+const deleteEdgeSpy = sinon.spy();
 const cosmosMock = {
     createEntryOfKind: createEntryOfKindSpy,
     createEdge: createEdgeSpy,
-    deleteEntry: deleteEntrySpy
+    deleteEntry: deleteEntrySpy,
+    deleteEdge: deleteEdgeSpy
 };
 uut.__set__("cosmos", cosmosMock);
 
@@ -85,5 +87,20 @@ describe('Entry Point Tests', function () {
         const args = deleteEntrySpy.args[0];
         expect(args[0]).toBe(message.id);
         expect(args[1]).toEqual(message.edgeLabelsToFollow);
+    });
+
+    test('should request cosmos to delete an edge', async function () {
+        const message = {
+            command: "delete-edge",
+            id: "someEdge"
+        }
+
+        const context = {};
+        await uut(context, JSON.stringify(message));
+
+        expect(deleteEdgeSpy.called).toBeTruthy();
+        expect(deleteEdgeSpy.callCount).toBe(1);
+        const args = deleteEdgeSpy.args[0];
+        expect(args[0]).toBe(message.id);
     });
 });

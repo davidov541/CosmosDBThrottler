@@ -97,7 +97,7 @@ async function deleteEdge(id) {
     const result1 = await client.submit(command1, {
         id: id
     })
-    console.log("deleteEdge #1; id = " + id +
+    console.log("deleteEdge; id = " + id +
     ";RUs used: " + result1.attributes["x-ms-request-charge"])
 
     await client.close();

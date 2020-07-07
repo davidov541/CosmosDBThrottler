@@ -14,5 +14,8 @@ module.exports = async function(_, msg) {
         case 'delete-vertex':
             await cosmos.deleteEntry(parsed.id, parsed.edgeLabelsToFollow);
             break;
+        case 'delete-edge':
+            await cosmos.deleteEdge(parsed.id);
+            break;
     }
 };
