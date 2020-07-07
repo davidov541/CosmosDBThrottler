@@ -43,7 +43,7 @@ describe('Entry Point Tests', function () {
         }
 
         const context = {};
-        await uut(context, JSON.stringify(message));
+        await uut(context, message);
 
         expect(createEntryOfKindSpy.called).toBeTruthy();
         expect(createEntryOfKindSpy.callCount).toBe(1);
@@ -72,7 +72,7 @@ describe('Entry Point Tests', function () {
         }
 
         const context = {};
-        await uut(context, JSON.stringify(message));
+        await uut(context, message);
 
         expect(createEdgeSpy.called).toBeTruthy();
         expect(createEdgeSpy.callCount).toBe(1);
@@ -96,7 +96,7 @@ describe('Entry Point Tests', function () {
         }
 
         const context = {};
-        await uut(context, JSON.stringify(message));
+        await uut(context, message);
 
         expect(deleteEntrySpy.called).toBeTruthy();
         expect(deleteEntrySpy.callCount).toBe(1);
@@ -117,7 +117,7 @@ describe('Entry Point Tests', function () {
         }
 
         const context = {};
-        await uut(context, JSON.stringify(message));
+        await uut(context, message);
 
         expect(deleteEdgeSpy.called).toBeTruthy();
         expect(deleteEdgeSpy.callCount).toBe(1);
@@ -144,7 +144,7 @@ describe('Entry Point Tests', function () {
         }
 
         const context = {};
-        await uut(context, JSON.stringify(message));
+        await uut(context, message);
 
         expect(deleteEdgeSpy.called).toBeTruthy();
         expect(deleteEdgeSpy.callCount).toBe(1);

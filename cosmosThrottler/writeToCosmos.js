@@ -19,14 +19,13 @@ async function processRequest(parsed) {
 }
 
 module.exports = async function(_, msg) {
-    console.log("Processing request: " + msg)
-    const parsed = JSON.parse(msg);
+    console.log("Processing request: " + JSON.stringify(msg))
     
-    if (parsed.environment == process.env.ENVIRONMENT)
+    if (msg.environment == process.env.ENVIRONMENT)
     {
-        for (var i = 0; i < parsed.commands.length; i++)
+        for (var i = 0; i < msg.commands.length; i++)
         {
-            await processRequest(parsed.commands[i])
+            await processRequest(msg.commands[i])
         }
     }
 };
