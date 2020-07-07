@@ -1,10 +1,6 @@
 ﻿var cosmos = require('./cosmos');
 
-module.exports = async function(_, msg) {
-    console.log("Processing request: " + msg)
-    const parsed = JSON.parse(msg);
-    if (parsed.environment == process.env.ENVIRONMENT)
-    {
+async function processRequest(parsed) {
         switch(parsed.command)
         {
             case 'add-vertex':
@@ -19,6 +15,18 @@ module.exports = async function(_, msg) {
             case 'delete-edge':
                 await cosmos.deleteEdge(parsed.id);
                 break;
+        }
+}
+
+module.exports = async function(_, msg) {
+    console.log("Processing request: " + msg)
+    const parsed = JSON.parse(msg);
+    
+    if (parsed.environment == process.env.ENVIRONMENT)
+    {
+        for (var i = 0; i < parsed.length; i++)
+        {
+            await processRequest(parsed[i])
         }
     }
 };
