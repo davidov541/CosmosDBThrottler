@@ -33,7 +33,8 @@ describe('Entry Point Tests', function () {
             edges: [
                 "edge1",
                 "edge2"
-            ]
+            ],
+            environment: process.env.ENVIRONMENT
         }
 
         const context = {};
@@ -57,7 +58,8 @@ describe('Entry Point Tests', function () {
             properties: {
                 property1: "prop1val",
                 property2: "prop2val"
-            }
+            },
+            environment: process.env.ENVIRONMENT
         }
 
         const context = {};
@@ -76,7 +78,8 @@ describe('Entry Point Tests', function () {
         const message = {
             command: "delete-vertex",
             id: "someEntity",
-            edgeLabelsToFollow: ["label1", "label2"]
+            edgeLabelsToFollow: ["label1", "label2"],
+            environment: process.env.ENVIRONMENT
         }
 
         const context = {};
@@ -92,7 +95,8 @@ describe('Entry Point Tests', function () {
     test('should request cosmos to delete an edge', async function () {
         const message = {
             command: "delete-edge",
-            id: "someEdge"
+            id: "someEdge",
+            environment: process.env.ENVIRONMENT
         }
 
         const context = {};
