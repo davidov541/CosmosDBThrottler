@@ -3,7 +3,7 @@
 module.exports = async function(_, msg) {
     const parsed = JSON.parse(msg);
     console.log(cosmos);
-    switch(parsed.entityType)
+    switch(parsed.command)
     {
         case 'add-vertex':
             await cosmos.createEntryOfKind(parsed.kind, parsed.id, parsed.properties, parsed.edges);
