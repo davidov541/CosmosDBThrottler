@@ -1,7 +1,7 @@
 ﻿var cosmos = require('./cosmos');
 
 module.exports = async function(_, msg) {
-    console.log("Processing request: " + message)
+    console.log("Processing request: " + msg)
     const parsed = JSON.parse(msg);
     if (parsed.environment == process.env.ENVIRONMENT)
     {
