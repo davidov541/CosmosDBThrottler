@@ -27,5 +27,7 @@ module.exports = async function(_, msg) {
         {
             await processRequest(msg.commands[i])
         }
+    } else {
+        throw "Incorrect environment for this message.";
     }
 };
