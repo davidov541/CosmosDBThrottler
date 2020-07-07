@@ -1,6 +1,6 @@
 {
   "name": "cosmosdb_throttler",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Simple function to read messages from Azure Service Hub and write to CosmosDB at a throttled pace.",
   "license": "Apache-2.0",
   "repository": {

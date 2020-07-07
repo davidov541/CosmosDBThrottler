@@ -176,4 +176,29 @@ describe('Cosmos Interface Tests', function () {
         expect(closeSpy.called).toBeTruthy();
         expect(closeSpy.callCount).toBe(1);
     });
+    
+    test('should properly ask to delete edge', async function () {
+        const message = {
+            id: "someEdge"
+        }
+        
+        await uut.deleteEdge(message.id);
+
+        expect(openSpy.called).toBeTruthy();
+        expect(openSpy.callCount).toBe(1);
+
+        expect(submitFake.called).toBeTruthy();
+        expect(submitFake.callCount).toBe(1);
+
+        const expectedQuery1 = "g.E(id).drop()";
+        const expectedParameters1 = {
+            id: message.id
+        }
+        const args1 = submitFake.args[0];
+        expect(args1[0]).toBe(expectedQuery1);
+        expect(args1[1]).toEqual(expectedParameters1);
+
+        expect(closeSpy.called).toBeTruthy();
+        expect(closeSpy.callCount).toBe(1);
+    });
 });
