@@ -21,7 +21,7 @@ describe('Entry Point Tests', function () {
 
     test('should request cosmos to create the vertex', async function () {
         const message = {
-            entityType: "vertex",
+            entityType: "add-vertex",
             kind: "fakeKind",
             id: "someID",
             properties: {
@@ -48,7 +48,7 @@ describe('Entry Point Tests', function () {
 
     test('should request cosmos to create the edge', async function () {
         const message = {
-            entityType: "edge",
+            entityType: "add-edge",
             source: "someSource",
             target: "someTarget",
             relationship: "fakeRelationship",
@@ -72,7 +72,7 @@ describe('Entry Point Tests', function () {
 
     test('should request cosmos to delete an entity', async function () {
         const message = {
-            entityType: "deletion",
+            entityType: "delete-vertex",
             id: "someEntity",
             edgeLabelsToFollow: ["label1", "label2"]
         }
