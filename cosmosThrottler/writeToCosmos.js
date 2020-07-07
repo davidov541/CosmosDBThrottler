@@ -24,9 +24,9 @@ module.exports = async function(_, msg) {
     
     if (parsed.environment == process.env.ENVIRONMENT)
     {
-        for (var i = 0; i < parsed.length; i++)
+        for (var i = 0; i < parsed.commands.length; i++)
         {
-            await processRequest(parsed[i])
+            await processRequest(parsed.commands[i])
         }
     }
 };
